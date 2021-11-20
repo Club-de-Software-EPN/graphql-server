@@ -1,0 +1,26 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String
+}
+
+type ToDo {
+  id: ID!
+  title: String!
+  description: String!
+  completed: Boolean!
+  user: User!
+}
+
+type Query {
+  getUser(id: ID!): User
+  getUsers: [User]
+  getToDos (userId: ID!): [ToDo]
+}
+
+type Mutation {
+  createUser(name: String!, email: String!, password: String!): User
+  createToDo(title: String!, description: String!, userId: ID!): ToDo
+  markToDoCompleted(id: ID!): ToDo
+}
